@@ -19,6 +19,7 @@ public class ReadDataFrameFromRedis {
                 .format("org.apache.spark.sql.redis")
                 .option("partitions.number",2)
                 .option("keys.pattern", "user:*")
+                .option("ttl", 30)
                 .option("infer.schema", true)
                 .load();
 

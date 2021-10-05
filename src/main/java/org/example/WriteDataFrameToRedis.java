@@ -32,6 +32,7 @@ public class WriteDataFrameToRedis {
         df.write()
                 .format("org.apache.spark.sql.redis")
                 .option("table", "user")
+                .option("ttl", 30)
                 .option("key.column", "name")
                 .mode(SaveMode.Overwrite)
                 .save();
