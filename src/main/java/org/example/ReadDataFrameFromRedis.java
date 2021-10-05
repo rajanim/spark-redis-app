@@ -17,8 +17,8 @@ public class ReadDataFrameFromRedis {
 
         Dataset<Row> df = spark.read()
                 .format("org.apache.spark.sql.redis")
-                .option("partitions.number",3)
-                .option("keys.pattern", "customer:*")
+                .option("partitions.number",2)
+                .option("keys.pattern", "user:*")
                 .option("infer.schema", true)
                 .load();
 
