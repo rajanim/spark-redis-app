@@ -16,9 +16,9 @@ public class WriteDataFrameToRedis {
         SparkSession spark = SparkSession
                 .builder()
                 .appName("write-redis-df")
-                .master("spark://spark-master:7077")
-                .config("spark.redis.host", "redis-13200.re-cluster1.ps-redislabs.org")
-                .config("spark.redis.port", "13200")
+                .master("local[*]")
+                .config("spark.redis.host", "localhost")
+                .config("spark.redis.port", "6379")
                 .getOrCreate();
 
         Dataset<Row> df = spark.createDataFrame(Arrays.asList(
@@ -31,7 +31,7 @@ public class WriteDataFrameToRedis {
 
         df.write()
                 .format("org.apache.spark.sql.redis")
-                .option("table", "person")
+                .option("table", "user")
                 .option("key.column", "name")
                 .mode(SaveMode.Overwrite)
                 .save();

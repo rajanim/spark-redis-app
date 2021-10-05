@@ -1,7 +1,6 @@
 package org.example;
 
 import org.apache.spark.SparkConf;
-import org.apache.spark.sql.DataFrameReader;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.SparkSession;
 
